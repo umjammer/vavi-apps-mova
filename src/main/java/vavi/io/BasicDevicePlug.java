@@ -20,12 +20,12 @@ import vavi.util.event.GenericListener;
 
 /**
  * BasicDevice.
- * ƒTƒuƒNƒ‰ƒX‚Í•K‚¸ (Ljava/lang/String;) ‚ÌƒVƒOƒlƒ`ƒƒ‚ğ‚ÂƒRƒ“ƒXƒgƒ‰ƒNƒ^‚ğ
- * ‚½‚È‚¯‚ê‚Î‚È‚è‚Ü‚¹‚ñB
- *		
- * @see		#newInstance(String,String)
- * @author	<a href=mailto:vavivavi@yahoo.co.jp>Naohide Sano</a> (nsano)
- * @version	0.00	040309	nsano	initial version <br>
+ * ã‚µãƒ–ã‚¯ãƒ©ã‚¹ã¯å¿…ãš (Ljava/lang/String;) ã®ã‚·ã‚°ãƒãƒãƒ£ã‚’æŒã¤ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã‚’
+ * æŒãŸãªã‘ã‚Œã°ãªã‚Šã¾ã›ã‚“ã€‚
+ *
+ * @see #newInstance(String,String)
+ * @author <a href=mailto:vavivavi@yahoo.co.jp>Naohide Sano</a> (nsano)
+ * @version 0.00 040309 nsano initial version <br>
  */
 public abstract class BasicDevicePlug extends AbstractDevicePlug {
 
@@ -53,11 +53,11 @@ public abstract class BasicDevicePlug extends AbstractDevicePlug {
         return c.newInstance(name);
     }
 
-    /** ¯•Êq(ŠeƒfƒoƒCƒX‚ÌƒvƒƒpƒeƒBƒtƒ@ƒCƒ‹‚ÉƒŠƒXƒg‚³‚ê‚½‚à‚Ì‚ğw’è) */
+    /** è­˜åˆ¥å­(å„ãƒ‡ãƒã‚¤ã‚¹ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãƒ•ã‚¡ã‚¤ãƒ«ã«ãƒªã‚¹ãƒˆã•ã‚ŒãŸã‚‚ã®ã‚’æŒ‡å®š) */
     protected String name;
 
     /**
-     * @param	name	ƒvƒƒpƒeƒBƒtƒ@ƒCƒ‹‚Ì‚Ç‚Ì IODevice ‚ğg—p‚·‚é‚©‚ğw’è
+     * @param name ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãƒ•ã‚¡ã‚¤ãƒ«ã®ã©ã® IODevice ã‚’ä½¿ç”¨ã™ã‚‹ã‹ã‚’æŒ‡å®š
      */
     public BasicDevicePlug(String name) {
         this.name = name;
@@ -65,12 +65,12 @@ public abstract class BasicDevicePlug extends AbstractDevicePlug {
 
     //-------------------------------------------------------------------------
 
-    /** ‚±‚ÌƒfƒoƒCƒX‚Ì IO ƒfƒoƒCƒXƒNƒ‰ƒX‚ğæ“¾‚µ‚Ü‚·B */
+    /** ã“ã®ãƒ‡ãƒã‚¤ã‚¹ã® IO ãƒ‡ãƒã‚¤ã‚¹ã‚¯ãƒ©ã‚¹ã‚’å–å¾—ã—ã¾ã™ã€‚ */
     protected abstract String getIODeviceClass();
 
     /**
-     * ‚±‚ÌƒfƒoƒCƒX‚Ì IO ƒfƒoƒCƒXƒNƒ‰ƒX‚Ì¯•Êq‚ğæ“¾‚µ‚Ü‚·B
-     * (ƒVƒŠƒAƒ‹ƒ|[ƒg–¼‚â IP ‚Ìƒ|[ƒg”Ô†‚ªw’è‚³‚êd•¡ƒI[ƒvƒ“‚ğ”ğ‚¯‚Ü‚·)
+     * ã“ã®ãƒ‡ãƒã‚¤ã‚¹ã® IO ãƒ‡ãƒã‚¤ã‚¹ã‚¯ãƒ©ã‚¹ã®è­˜åˆ¥å­ã‚’å–å¾—ã—ã¾ã™ã€‚
+     * (ã‚·ãƒªã‚¢ãƒ«ãƒãƒ¼ãƒˆåã‚„ IP ã®ãƒãƒ¼ãƒˆç•ªå·ãŒæŒ‡å®šã•ã‚Œé‡è¤‡ã‚ªãƒ¼ãƒ—ãƒ³ã‚’é¿ã‘ã¾ã™)
      */
     protected abstract String getIODeviceName();
 
@@ -80,14 +80,14 @@ public abstract class BasicDevicePlug extends AbstractDevicePlug {
     /** */
     protected IODeviceOutputStream os;
 
-    /** IO ƒfƒoƒCƒX‚Ì¯•ÊqAIO ƒfƒoƒCƒX‚ÌƒyƒA */
+    /** IO ãƒ‡ãƒã‚¤ã‚¹ã®è­˜åˆ¥å­ã€IO ãƒ‡ãƒã‚¤ã‚¹ã®ãƒšã‚¢ */
     private Map<String,IODevice> ioDevices = new HashMap<String,IODevice>();
 
     /**
-     * IO ƒfƒoƒCƒX‚ğæ“¾‚µ‚Ü‚·B
-     * ‚±‚±‚ÅƒCƒ“ƒXƒ^ƒ“ƒX‰»‚³‚ê‚é IODevice ‚ÌÀ‘•ƒNƒ‰ƒX‚Í•K‚¸
-     * (Ljava/lang/String;) ‚ÌƒVƒOƒlƒ`ƒƒ‚ğ‚ÂƒRƒ“ƒXƒgƒ‰ƒNƒ^‚ğ
-     * ‚½‚È‚¯‚ê‚Î‚È‚è‚Ü‚¹‚ñB
+     * IO ãƒ‡ãƒã‚¤ã‚¹ã‚’å–å¾—ã—ã¾ã™ã€‚
+     * ã“ã“ã§ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹åŒ–ã•ã‚Œã‚‹ IODevice ã®å®Ÿè£…ã‚¯ãƒ©ã‚¹ã¯å¿…ãš
+     * (Ljava/lang/String;) ã®ã‚·ã‚°ãƒãƒãƒ£ã‚’æŒã¤ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã‚’
+     * æŒãŸãªã‘ã‚Œã°ãªã‚Šã¾ã›ã‚“ã€‚
      */
     private IODevice getIODevice()
         throws ClassNotFoundException,
@@ -110,8 +110,8 @@ Debug.println("name: " + name + ": " + className);
     }
 
     /**
-     * “ü—ÍƒXƒgƒŠ[ƒ€‚ğƒI[ƒvƒ“‚µ‚Ä‚¢‚È‚¯‚ê‚ÎƒI[ƒvƒ“‚µ‚Ü‚·B
-     * ƒRƒ“ƒXƒgƒ‰ƒNƒ^‚ÅƒI[ƒvƒ“‚µ‚È‚¢‚Ì‚Í•Ğ•û‚Ì‚İ‚ÌƒfƒoƒCƒX‚àİ‚é‚½‚ß
+     * å…¥åŠ›ã‚¹ãƒˆãƒªãƒ¼ãƒ ã‚’ã‚ªãƒ¼ãƒ—ãƒ³ã—ã¦ã„ãªã‘ã‚Œã°ã‚ªãƒ¼ãƒ—ãƒ³ã—ã¾ã™ã€‚
+     * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã§ã‚ªãƒ¼ãƒ—ãƒ³ã—ãªã„ã®ã¯ç‰‡æ–¹ã®ã¿ã®ãƒ‡ãƒã‚¤ã‚¹ã‚‚åœ¨ã‚‹ãŸã‚
      */
     protected void makeSureInputStreamOpened() {
         if (this.is != null) {
@@ -168,8 +168,8 @@ Debug.println("IN[" + getIODeviceName() + "]: thread stopped");
     }
 
     /**
-     * o—ÍƒXƒgƒŠ[ƒ€‚ğƒI[ƒvƒ“‚µ‚Ä‚¢‚È‚¯‚ê‚ÎƒI[ƒvƒ“‚µ‚Ü‚·B
-     * ƒRƒ“ƒXƒgƒ‰ƒNƒ^‚ÅƒI[ƒvƒ“‚µ‚È‚¢‚Ì‚Í•Ğ•û‚Ì‚İ‚ÌƒfƒoƒCƒX‚àİ‚é‚½‚ß
+     * å‡ºåŠ›ã‚¹ãƒˆãƒªãƒ¼ãƒ ã‚’ã‚ªãƒ¼ãƒ—ãƒ³ã—ã¦ã„ãªã‘ã‚Œã°ã‚ªãƒ¼ãƒ—ãƒ³ã—ã¾ã™ã€‚
+     * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã§ã‚ªãƒ¼ãƒ—ãƒ³ã—ãªã„ã®ã¯ç‰‡æ–¹ã®ã¿ã®ãƒ‡ãƒã‚¤ã‚¹ã‚‚åœ¨ã‚‹ãŸã‚
      */
     protected void makeSureOutputStreamOpened() {
         if (this.os != null) {

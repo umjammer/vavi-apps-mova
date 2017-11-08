@@ -13,7 +13,7 @@ import vavi.util.Debug;
 
 /**
  * t907_1
- * 
+ *
  * @author <a href=mailto:vavivavi@yahoo.co.jp>nsano</a>
  * @version 0.00 040309 nsano initial version <br>
  */

@@ -11,14 +11,14 @@ import java.util.List;
 
 /**
  * CommandList.
- * 
+ *
  * @author <a href=mailto:vavivavi@yahoo.co.jp>Naohide Sano</a> (nsano)
  * @version 0.00 040315 nsano initial version <br>
  */
 public class CommandList {
 
     /** */
-    private List<Command> commands = new ArrayList<Command>();
+    private List<Command> commands = new ArrayList<>();
 
     /** */
     public void addCommand(Command command) {

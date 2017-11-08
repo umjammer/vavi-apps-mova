@@ -12,7 +12,7 @@ import vavi.util.StringUtil;
 
 /**
  * FomaDevice
- * 
+ *
  * @author <a href=mailto:vavivavi@yahoo.co.jp>Naohide Sano</a> (nsano)
  * @version 0.00 040323 nsano initial version <br>
  */

@@ -13,9 +13,9 @@ import vavi.util.Debug;
 
 /**
  * NetwotkDevicePlug.
- *		
- * @author	<a href=mailto:vavivavi@yahoo.co.jp>Naohide Sano</a> (nsano)
- * @version	0.00	040309	nsano	initial version <br>
+ *
+ * @author <a href=mailto:vavivavi@yahoo.co.jp>Naohide Sano</a> (nsano)
+ * @version 0.00 040309 nsano initial version <br>
  */
 public class NetworkDevicePlug extends BasicDevicePlug {
 

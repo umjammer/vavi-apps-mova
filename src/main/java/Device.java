@@ -22,134 +22,134 @@ import vavi.util.StringUtil;
 
 /**
  * Device
- * 
+ *
  * @author ARAI, Shunichi
  * @author <a href="mailto:vavivavi@yahoo.co.jp">Naohide Sano</a> (nsano)
  * @version 0.00 040325 nsano initial version <br>
  */
 public abstract class Device {
 
-    /** �����ۗ� ���M���̉����ۗ��y�щ����ۗ������ɗ��p */
+    /** 応答保留 着信時の応答保留及び応答保留解除に利用 */
     public static final int COMMAND_SUSPEND = 0x82;
 
-    /** �������_�C�����������ݗv�� �������_�C�����ԍ� nm �ɏ������݂܂� */
+    /** メモリダイヤル書き込み要求 メモリダイヤル番号 nm に書き込みます */
     public static final int COMMAND_WRITEMEMORY = 0x83; // + 0x0n + 0x0m 
 
     /**
-     * �_�C��������
-     * �v���Z�b�g���M���̃_�C�����M���̒���y�у������_�C�����������ݗv������
-     * �_�C�����M���̒���ɑ��o���܂�
+     * ダイヤル完了
+     * プリセット発信時のダイヤル信号の直後及びメモリダイヤル書き込み要求時の
+     * ダイヤル信号の直後に送出します
      */
     public static final int COMMAND_FINISHDIAL = 0x86;
 
-    /** �������_�C�����ǂݏo���v�� �������_�C�����ԍ� nm ��ǂݏo���܂� */
+    /** メモリダイヤル読み出し要求 メモリダイヤル番号 nm を読み出します */
     public static final int COMMAND_READMEMORY = 0x87; // + 0x0n + 0x0m 
 
-    /** �_�C�������b�N�v�� �_�C�������b�N��������Ƃ��Ɏg�p���܂� */
+    /** ダイヤルロック要求 ダイヤルロックをかけるときに使用します */
     public static final int COMMAND_LOCKDIAL = 0x8a;
 
-    /** �t�b�L���O �ʘb���̃t�b�L���O���Ɏg�p���܂� */
+    /** フッキング 通話中のフッキング時に使用します */
     public static final int COMMAND_HOOK = 0x8b;
 
-    /** �l�ԍ��\���v�� ���̃P�[�^�C�̔ԍ���ǂݏo���Ƃ��Ɏg�p���܂� */
+    /** 個人番号表示要求 そのケータイの番号を読み出すときに使用します */
     public static final int COMMAND_GETNUMBER = 0x8e;
 
-    /** �_�C���� �ԍ�k(��1)���_�C�������܂� */
+    /** ダイヤル 番号k(注1)をダイヤルします */
     public static final int COMMAND_DIAL = 0x90; // + k
 
-    /** �t�b�N�X�C�b�`(1) �I���N���[�h���ŃI���t�b�N(�I��)���܂� */
+    /** フックスイッチ(1) オンクレードルでオンフック(終了)します */
     public static final int COMMAND_STOPTONHOOK = 0xa4;
 
-    /** �t�b�N�X�C�b�`(2) �I���N���[�h���ŃI�t�t�b�N(�J�n)���܂� */
+    /** フックスイッチ(2) オンクレードルでオフフック(開始)します */
     public static final int COMMAND_STARTINHOOK = 0xa5;
 
-    /** �t�b�N�X�C�b�`(3) �I�t�N���[�h���ŃI���t�b�N(�I��)���܂� */
+    /** フックスイッチ(3) オフクレードルでオンフック(終了)します */
     public static final int COMMAND_STOPOFFHOOK = 0xa6;
 
-    /** �t�b�N�X�C�b�`(4) �I�t�N���[�h���ŃI�t�t�b�N(�J�n)���܂� */
+    /** フックスイッチ(4) オフクレードルでオフフック(開始)します */
     public static final int COMMAND_STARTOFFHOOK = 0xa7;
 
     /**
-     * ���b�~���[�g OFF ��Ԓʒm
-     * PC �����~���[�gOFF ��Ԃł��邱�Ƃ�ʒm���܂�
+     * 送話ミュート OFF 状態通知
+     * PC 側がミュートOFF 状態であることを通知します
      */
     public static final int COMMAND_MUTEOFF = 0xc0;
 
     /**
-     * ���b�~���[�g ON ��Ԓʒm
-     * PC �����~���[�gON ��Ԃł��邱�Ƃ�ʒm���܂�
+     * 送話ミュート ON 状態通知
+     * PC 側がミュートON 状態であることを通知します
      */
     public static final int COMMAND_MUTEON = 0xc1;
 
     /**
-     * ���M�T�C�����g���[�h OFF ��Ԓʒm
-     * PC �������M���̌ďo�����[�h�� OFF ��Ԃł��邱�Ƃ�ʒm���܂�
+     * 着信サイレントモード OFF 状態通知
+     * PC 側が着信時の呼出音モードが OFF 状態であることを通知します
      */
     public static final int COMMAND_SILENTOFF = 0xc2;
 
     /**
-     * ���M�T�C�����g���[�h ON ��Ԓʒm
-     * PC �������M���̌ďo�����[�h�� ON ��Ԃł��邱�Ƃ�ʒm���܂�
+     * 着信サイレントモード ON 状態通知
+     * PC 側が着信時の呼出音モードが ON 状態であることを通知します
      */
     public static final int COMMAND_SILENTON = 0xc3;
 
     /**
-     * �񓮍�M��
-     * �񓮍�M���̃w�b�_ (0xD0) �ɑ����đ��M�����M����C�ӂ̗p�r��
-     * �g�p���邱�Ƃ��\
+     * 非動作信号
+     * 非動作信号のヘッダ (0xD0) に続いて送信される信号を任意の用途に
+     * 使用することが可能
      */
     public static final int COMMAND_PROHIBIT = 0xd0; // + 0x0n (+ 0x0m + ...)
 
-    /** ���M�]���v��(�g�[�L����) ���M�]���Ɏg�p���܂� */
+    /** 着信転送要求(トーキ無し) 着信転送に使用します */
     public static final int COMMAND_E0 = 0xe0;
 
-    /** ���M�]���v��(�g�[�L����) ���M�]���Ɏg�p���܂� */
+    /** 着信転送要求(トーキあり) 着信転送に使用します */
     public static final int COMMAND_E1 = 0xe1;
 
-    /** ����ԓd�b�v�� ���M���̗���ԓd�b�Ɏg�p���܂� */
+    /** 留守番電話要求 着信時の留守番電話に使用します */
     public static final int COMMAND_E2 = 0xe2;
 
-    /** �ʐM���]���v�� �ʐM���̑���𑼂̑���ɓ]�����鎞�Ɏg�p���܂� */
+    /** 通信中転送要求 通信中の相手を他の相手に転送する時に使用します */
     public static final int COMMAND_E3 = 0xe3;
 
-    /** �O�Ғʘb�v��(�ؑփ��[�h) �ʐM���̔��M���s�Ȃ����Ɏg�p���܂� */
+    /** 三者通話要求(切替モード) 通信中の発信を行なう時に使用します */
     public static final int COMMAND_E4 = 0xe4;
 
-    /** �O�Ғʘb�v��(�~�L�V���O���[�h) �ʐM���̔��M���s�Ȃ����Ɏg�p���܂� */
+    /** 三者通話要求(ミキシングモード) 通信中の発信を行なう時に使用します */
     public static final int COMMAND_E5 = 0xe5;
 
     /**
-     * �ۗ��Đؒf�v��
-     * �O�Ғʘb�܂��̓R�[���E�F�C�e�B���O���ɕۗ��Ƃ��Ă���l�Ƃ̒ʘb��
-     * �I������Ƃ��Ɏg�p���܂�
+     * 保留呼切断要求
+     * 三者通話またはコールウェイティング時に保留としている人との通話を
+     * 終了するときに使用します
      */
     public static final int COMMAND_E7 = 0xe7;
 
-    /** ��d�b�T�[�r�X�v��(G3 FAX OFF�v��) G3 FAX �� OFF ���� */
+    /** 非電話サービス要求(G3 FAX OFF要求) G3 FAX を OFF する */
     public static final int COMMAND_E8_00 = 0xe8; // + 0x00
 
-    /** ��d�b�T�[�r�X�v��(MNP���f��OFF�v��) MNP ���f���� OFF ���� */
+    /** 非電話サービス要求(MNPモデムOFF要求) MNP モデムを OFF する */
     public static final int COMMAND_E8_01 = 0xe8; // + 0x01
 
-    /** ��d�b�T�[�r�X�v��(G3 FAX ON�v��) G3 FAX �� ON ���� */
+    /** 非電話サービス要求(G3 FAX ON要求) G3 FAX を ON する */
     public static final int COMMAND_E8_08 = 0xe8; // + 0x08
 
-    /** ��d�b�T�[�r�X�v��(MNP���f��ON�v��) MNP ���f���� ON ���� */
+    /** 非電話サービス要求(MNPモデムON要求) MNP モデムを ON する */
     public static final int COMMAND_E8_09 = 0xe8; // + 0x09
 
-    /** ���M���ۗv�� ���M�����ۂ���Ƃ��Ɏg�p���܂�(���M���ɑ��o) */
+    /** 着信拒否要求 着信を拒否するときに使用します(着信時に送出) */
     public static final int COMMAND_E9 = 0xe9;
 
-    /** ���ԍ��\������ ���ԍ���\�����邱�Ƃ��\�ɂ��܂� */
+    /** 発番号表示許可 発番号を表示することを可能にします */
     public static final int COMMAND_EA = 0xea;
 
-    /** ���ԍ��\���֎~ ���ԍ���\�����邱�Ƃ�s�\�ɂ��܂� */
+    /** 発番号表示禁止 発番号を表示することを不可能にします */
     public static final int COMMAND_EB = 0xeb;
 
-    /** VOX �w��Ȃ� VOX �Ȃ� */
+    /** VOX 指定なし VOX なし */
     public static final int COMMAND_6A = 0x6a;
 
-    /** VOX �w�肠�� VOX ���� */
+    /** VOX 指定あり VOX あり */
     public static final int COMMAND_6B = 0x6b;
 
     //----

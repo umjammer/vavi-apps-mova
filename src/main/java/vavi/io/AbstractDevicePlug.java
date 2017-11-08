@@ -14,31 +14,31 @@ import vavi.util.event.GenericSupport;
 /**
  * AbstractDevicePlug.
  *
- * @author	<a href=mailto:vavivavi@yahoo.co.jp>Naohide Sano</a> (nsano)
- * @version	0.00	040309	nsano	initial version <br>
+ * @author <a href=mailto:vavivavi@yahoo.co.jp>Naohide Sano</a> (nsano)
+ * @version 0.00 040309 nsano initial version <br>
  */
 public abstract class AbstractDevicePlug {
 
     /**
-     * “ü—ÍƒfƒoƒCƒX‚Ìƒ|[ƒŠƒ“ƒO‚ğs‚¤ƒXƒŒƒbƒh‚ğæ“¾‚µ‚Ü‚·B
-     * ˆÈ‰º‚ğ <code>java.lang.Runnable#run()</code> ƒƒ\ƒbƒh‚É‹Lq‚·‚é‚±‚ÆB
+     * å…¥åŠ›ãƒ‡ãƒã‚¤ã‚¹ã®ãƒãƒ¼ãƒªãƒ³ã‚°ã‚’è¡Œã†ã‚¹ãƒ¬ãƒƒãƒ‰ã‚’å–å¾—ã—ã¾ã™ã€‚
+     * ä»¥ä¸‹ã‚’ <code>java.lang.Runnable#run()</code> ãƒ¡ã‚½ãƒƒãƒ‰ã«è¨˜è¿°ã™ã‚‹ã“ã¨ã€‚
      * <ol>
-     * <li>“ü—ÍƒfƒoƒCƒX‚©‚ç‚PƒuƒƒbƒN‚ğ“Ç‚İæ‚é</li>
-     * <li>1. ‚Ìƒf[ƒ^‚ğ <code>vavi.gps.GpsData</code> ‚Ü‚½‚Í‚»‚ÌƒTƒuƒNƒ‰ƒX‚É
-     * •ÏŠ·‚·‚é</li>
-     * <li><code>vavi.util.event.GenericEvent</code> ‚ğ
-     * argument ‚Í 2. ‚Ìƒf[ƒ^Aname ‚Í "data" ‚Æ‚µ‚Äì¬‚·‚é</li>
-     * <li>3. ‚ÌƒCƒxƒ“ƒg‚ğˆø”‚É‚µ‚Ä <code>fireEventHappened()</code>
-     * ƒƒ\ƒbƒh‚ğ”­s‚·‚é</li>
+     * <li>å…¥åŠ›ãƒ‡ãƒã‚¤ã‚¹ã‹ã‚‰ï¼‘ãƒ–ãƒ­ãƒƒã‚¯ã‚’èª­ã¿å–ã‚‹</li>
+     * <li>1. ã®ãƒ‡ãƒ¼ã‚¿ã‚’ <code>vavi.gps.GpsData</code> ã¾ãŸã¯ãã®ã‚µãƒ–ã‚¯ãƒ©ã‚¹ã«
+     * å¤‰æ›ã™ã‚‹</li>
+     * <li><code>vavi.util.event.GenericEvent</code> ã‚’
+     * argument ã¯ 2. ã®ãƒ‡ãƒ¼ã‚¿ã€name ã¯ "data" ã¨ã—ã¦ä½œæˆã™ã‚‹</li>
+     * <li>3. ã®ã‚¤ãƒ™ãƒ³ãƒˆã‚’å¼•æ•°ã«ã—ã¦ <code>fireEventHappened()</code>
+     * ãƒ¡ã‚½ãƒƒãƒ‰ã‚’ç™ºè¡Œã™ã‚‹</li>
      * </ol>
-     * @return	java.lang.Runnable ‚ÌÀ‘•ƒNƒ‰ƒX
+     * @return java.lang.Runnable ã®å®Ÿè£…ã‚¯ãƒ©ã‚¹
      */
     protected abstract Runnable getInputThread();
 
-    /** TODO •¡”Ú‘±–¢‘Î‰ */
+    /** TODO è¤‡æ•°æ¥ç¶šæœªå¯¾å¿œ */
     protected volatile boolean loop;
 
-    /** ƒfƒoƒCƒX‚ğ‹@”\‚³‚¹‚Ü‚·B */
+    /** ãƒ‡ãƒã‚¤ã‚¹ã‚’æ©Ÿèƒ½ã•ã›ã¾ã™ã€‚ */
     public void start() {
         loop = true;
         Thread thread = new Thread(getInputThread());
@@ -46,21 +46,21 @@ public abstract class AbstractDevicePlug {
     }
 
     /**
-     * o—ÍƒfƒoƒCƒX‚Öƒf[ƒ^‚ğo—Í‚·‚éAƒCƒxƒ“ƒgƒŠƒXƒi‚ğæ“¾‚µ‚Ü‚·B
-     * ˆÈ‰º‚ğ <code>vavi.util.event.GenericEvent#eventHappened()</code>
-     * ƒƒ\ƒbƒh‚É‹Lq‚·‚é‚±‚ÆB
+     * å‡ºåŠ›ãƒ‡ãƒã‚¤ã‚¹ã¸ãƒ‡ãƒ¼ã‚¿ã‚’å‡ºåŠ›ã™ã‚‹ã€ã‚¤ãƒ™ãƒ³ãƒˆãƒªã‚¹ãƒŠã‚’å–å¾—ã—ã¾ã™ã€‚
+     * ä»¥ä¸‹ã‚’ <code>vavi.util.event.GenericEvent#eventHappened()</code>
+     * ãƒ¡ã‚½ãƒƒãƒ‰ã«è¨˜è¿°ã™ã‚‹ã“ã¨ã€‚
      * <ol>
-     * <li><code>vavi.util.event.GenericEvent</code> ‚Ì getName() ‚ª "name"
-     * ‚ÌƒCƒxƒ“ƒg‚Ì getArgument() ‚©‚ç <code>vavi.gps.GpsData</code> Œ^‚Ì
-     * ƒf[ƒ^‚ğæ“¾‚·‚é</li>
-     * <li>1. ‚Ìƒf[ƒ^‚ğo—ÍƒfƒoƒCƒX‚É“KØ‚ÈƒtƒH[ƒ}ƒbƒg‚É•ÏŠ·‚·‚é</li>
-     * <li>o—ÍƒfƒoƒCƒX‚É 2. ‚Ìƒf[ƒ^‚ğo—Í‚·‚é
+     * <li><code>vavi.util.event.GenericEvent</code> ã® getName() ãŒ "name"
+     * ã®ã‚¤ãƒ™ãƒ³ãƒˆã® getArgument() ã‹ã‚‰ <code>vavi.gps.GpsData</code> å‹ã®
+     * ãƒ‡ãƒ¼ã‚¿ã‚’å–å¾—ã™ã‚‹</li>
+     * <li>1. ã®ãƒ‡ãƒ¼ã‚¿ã‚’å‡ºåŠ›ãƒ‡ãƒã‚¤ã‚¹ã«é©åˆ‡ãªãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã«å¤‰æ›ã™ã‚‹</li>
+     * <li>å‡ºåŠ›ãƒ‡ãƒã‚¤ã‚¹ã« 2. ã®ãƒ‡ãƒ¼ã‚¿ã‚’å‡ºåŠ›ã™ã‚‹
      * </ol>
-     * @return	vavi.util.event.GenericListener ‚ÌÀ‘•ƒNƒ‰ƒX
+     * @return vavi.util.event.GenericListener ã®å®Ÿè£…ã‚¯ãƒ©ã‚¹
      */
     protected abstract GenericListener getOutputGenericListener();
 
-    /** “ü—ÍƒfƒoƒCƒX‚Æo—ÍƒfƒoƒCƒX‚ğÚ‘±‚µ‚Ü‚·B */
+    /** å…¥åŠ›ãƒ‡ãƒã‚¤ã‚¹ã¨å‡ºåŠ›ãƒ‡ãƒã‚¤ã‚¹ã‚’æ¥ç¶šã—ã¾ã™ã€‚ */
     public void connect(AbstractDevicePlug outputDevice) {
         // out@outputDevice -> in@inputDevice
         GenericListener listener = outputDevice.getOutputGenericListener();
@@ -72,20 +72,20 @@ public abstract class AbstractDevicePlug {
 
     //-------------------------------------------------------------------------
 
-    /** ”Ä—pƒCƒxƒ“ƒg‹@\‚ÌÀ‘• */
+    /** æ±ç”¨ã‚¤ãƒ™ãƒ³ãƒˆæ©Ÿæ§‹ã®å®Ÿè£… */
     private GenericSupport gs = new GenericSupport();
 
-    /** ”Ä—pƒCƒxƒ“ƒgƒŠƒXƒi‚ğ’Ç‰Á‚µ‚Ü‚·B */
+    /** æ±ç”¨ã‚¤ãƒ™ãƒ³ãƒˆãƒªã‚¹ãƒŠã‚’è¿½åŠ ã—ã¾ã™ã€‚ */
     public void addGenericListener(GenericListener listener) {
         gs.addGenericListener(listener);
     }
 
-    /** ”Ä—pƒCƒxƒ“ƒgƒŠƒXƒi‚ğíœ‚µ‚Ü‚·B */
+    /** æ±ç”¨ã‚¤ãƒ™ãƒ³ãƒˆãƒªã‚¹ãƒŠã‚’å‰Šé™¤ã—ã¾ã™ã€‚ */
     public void removeGenericListener(GenericListener listener) {
         gs.removeGenericListener(listener);
     }
 
-    /** ”Ä—pƒCƒxƒ“ƒg‚ğ”­s‚µ‚Ü‚·B */
+    /** æ±ç”¨ã‚¤ãƒ™ãƒ³ãƒˆã‚’ç™ºè¡Œã—ã¾ã™ã€‚ */
     protected void fireEventHappened(GenericEvent ev) {
         gs.fireEventHappened(ev);
     }

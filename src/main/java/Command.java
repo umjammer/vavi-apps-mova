@@ -7,7 +7,7 @@
 
 /**
  * Command.
- * 
+ *
  * @author <a href=mailto:vavivavi@yahoo.co.jp>Naohide Sano</a> (nsano)
  * @version 0.00 040315 nsano initial version <br>
  */
