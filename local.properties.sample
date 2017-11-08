@@ -3,8 +3,17 @@
 #
 # Written by Naohide Sano
 #
-# @author	<a href=mailto:"vavivavi@yahoo.co.jp">Naohide Sano</a> (nsano)
-# @version	0.00	040328	nsano	initial version
+# @author <a href=mailto:"vavivavi@yahoo.co.jp">Naohide Sano</a> (nsano)
+# @version 0.00 040328 nsano initial version
 #
 
+jvm=${env.JAVA_HOME}/bin/java
+javac.source=src/main/java
+javac.source.test=src/test/java
+javac.resource=src/main/resources
+javac.resource.test=src/test/resources
+javac.dest=target/classes
+javac.dest.test=target/test-classes
+
+#
 device=COM1
