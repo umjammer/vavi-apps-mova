@@ -65,7 +65,7 @@ Debug.printStackTrace(e);
     }
 
     /** */
-    public void finalize() throws Throwable {
+    protected void finalize() throws Throwable {
         System.out.println("  </commands>");
         System.out.println("</commandList>");
     }
@@ -141,9 +141,9 @@ Debug.println("command: " + StringUtil.toHex2(c));
 
         initActions();
 
-        for (int i = 0; i < keyOrder.length; i++) {
+        for (String s : keyOrder) {
             JButton b = new JButton();
-            b.setAction(actions[device.getKeyCode(keyOrder[i])]);
+            b.setAction(actions[device.getKeyCode(s)]);
             p.add(b);
         }
 

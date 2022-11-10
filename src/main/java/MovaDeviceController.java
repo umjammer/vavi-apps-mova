@@ -6,6 +6,8 @@
 
 import java.io.FileInputStream;
 import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.Iterator;
 
 import org.apache.commons.betwixt.io.BeanReader;
@@ -36,13 +38,11 @@ public class MovaDeviceController {
         System.err.println("bean: " + bean);
         System.err.println("count: " + bean.getCommands().size());
 
-        Iterator<Command> i = bean.getCommands().iterator();
-        while (i.hasNext()) {
-            Command command = i.next();
+        for (Command command : bean.getCommands()) {
 System.err.println("commands: " + StringUtil.paramString(command));
-	    if ("sleep".equals(command.getName())) {
+            if ("sleep".equals(command.getName())) {
                 int time = Integer.parseInt(command.getValue());
-                try { Thread.sleep(time); } catch (Exception e) {}
+                try { Thread.sleep(time); } catch (Exception ignored) {}
             } else if ("key".equals(command.getName())) {
                 md.writeCommand(3, md.getKeyCode(command.getValue()));
             }
@@ -53,7 +53,7 @@ System.err.println("commands: " + StringUtil.paramString(command));
 
     /** */
     public static void main(String[] args) throws Exception {
-        InputStream is = new FileInputStream(args[1]);
+        InputStream is = Files.newInputStream(Paths.get(args[1]));
         MovaDeviceController c = new MovaDeviceController(args[0], is);
     }
 }
