@@ -249,7 +249,7 @@ public abstract class Device {
     /** */
     private static final int[] table = new int[256];
 
-    /** */
+    /* */
     static {
         for (int i = 0; i < 256; i++) {
             table[i] = 0;
@@ -530,16 +530,14 @@ public abstract class Device {
         return names.getProperty(keyName);
     }
 
-    /** */
+    /* */
     static {
         try {
             Properties keys = new Properties();
             final String path1 = "key.properties";
             keys.load(DeviceUI.class.getResourceAsStream(path1));
 
-            Iterator<?> i = keys.keySet().iterator();
-            while (i.hasNext()) {
-                Object key = i.next();
+            for (Object key : keys.keySet()) {
                 Object value = keys.get(key);
 //System.err.println("com: " + key + ", " + value);
                 commands.put(key, value);

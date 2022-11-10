@@ -30,7 +30,7 @@ import vavi.util.event.GenericListener;
 public abstract class BasicDevicePlug extends AbstractDevicePlug {
 
     /** */
-    public static final AbstractDevicePlug newInstance(String className, String name)
+    public static AbstractDevicePlug newInstance(String className, String name)
         throws ClassNotFoundException,
                NoSuchMethodException,
                InstantiationException,
@@ -147,10 +147,7 @@ Debug.println("IN[" + getIODeviceName() + "]: thread started");
 //Debug.println("IN[" + getIODeviceName() + "]: -1 received");
                         } else {
 Debug.println("IN[" + getIODeviceName() + "]: " + StringUtil.toHex2(c));
-                            fireEventHappened(
-                                new GenericEvent(this,
-                                                 "data",
-                                                 new Integer(c)));
+                            fireEventHappened(new GenericEvent(this, "data", c));
                         }
                     } catch (IllegalArgumentException e) {
 //Debug.printStackTrace(e);
@@ -197,7 +194,7 @@ Debug.printStackTrace(e);
         return new GenericListener() {
             public void eventHappened(GenericEvent ev) {
                 try {
-                    int c = ((Integer) ev.getArguments()[0]).intValue();
+                    int c = (Integer) ev.getArguments()[0];
 //Debug.println("OUT[" + getIODeviceName() + "]: " + StringUtil.toHex2(c));
                     os.write(c);
 //                  os.flush();
